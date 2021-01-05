@@ -5,6 +5,7 @@ import { jwtConfig } from "./constants";
 let wss;
 
 export const initWss = value => {
+  console.log("init wss");
   wss = value;
   wss.on('connection', ws => {
     ws.on('message', message => {
@@ -24,6 +25,7 @@ export const initWss = value => {
 
 export const broadcast = (userId, data) => {
   if (!wss) {
+    console.log("!WSS");
     return;
   }
   wss.clients.forEach(client => {
